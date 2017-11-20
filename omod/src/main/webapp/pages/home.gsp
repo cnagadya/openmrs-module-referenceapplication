@@ -20,15 +20,20 @@
         </h4>
     <% } %>
 
-    <div id="apps">
+    <div id="apps" class="row">
+      <div class="extensions_wrap">
         <% extensions.each { ext -> %>
-            <a id="${ htmlSafeId(ext) }" href="/${ contextPath }/${ ext.url }" class="button app big">
+        <div class="col-lg-2 col-md-3 extension_div">
+            <a id="${ htmlSafeId(ext) }" href="/${ contextPath }/${ ext.url }" class="thumbnail btn btn-primary">
                 <% if (ext.icon) { %>
                    <i class="${ ext.icon }"></i>
                 <% } %>
-                ${ ui.message(ext.label) }
+                <span>${ ui.message(ext.label) }</span>
             </a>
+            </div>
         <% } %>
+        <div class="clear"></div>
+        </div>
     </div>
 
 </div>

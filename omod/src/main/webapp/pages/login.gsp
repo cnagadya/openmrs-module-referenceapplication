@@ -1,6 +1,6 @@
 <%
     ui.includeFragment("appui", "standardEmrIncludes")
-    ui.includeCss("referenceapplication", "login.css")
+    ui.includeCss("referenceapplication", "styleguide.scss")
 %>
 
 <!DOCTYPE html>
@@ -10,8 +10,9 @@
     <link rel="shortcut icon" type="image/ico" href="/${ ui.contextPath() }/images/openmrs-favicon.ico"/>
     <link rel="icon" type="image/png\" href="/${ ui.contextPath() }/images/openmrs-favicon.png"/>
     ${ ui.resourceLinks() }
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+<body class="container-fluid">
 <script type="text/javascript">
     var OPENMRS_CONTEXT_PATH = '${ ui.contextPath() }';
 </script>
@@ -97,15 +98,15 @@ ${ ui.includeFragment("referenceapplication", "infoAndErrorMessages") }
         pageReady = true;
     });
 </script>
-
-<header>
-    <div class="logo">
-        <a href="${ui.pageLink("referenceapplication", "home")}">
-            <img src="${ui.resourceLink("referenceapplication", "images/openMrsLogo.png")}"/>
-        </a>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="${ui.pageLink("referenceapplication", "home")}">
+        <img alt="Brand" src="${ui.resourceLink("referenceapplication", "images/openMrsLogo.png")}">
+      </a>
     </div>
-</header>
-
+  </div>
+</nav>
 <div id="body-wrapper">
     <div id="content">
         <form id="login-form" method="post" autocomplete="off">
@@ -116,45 +117,44 @@ ${ ui.includeFragment("referenceapplication", "infoAndErrorMessages") }
                     ${ ui.message("referenceapplication.login.loginHeading") }
                 </legend>
 
-                <p class="left">
-                    <label for="username">
+                <div class="col-sm-6 form-group">
+                    <div for="username">
                         ${ ui.message("referenceapplication.login.username") }:
-                    </label>
-                    <input id="username" type="text" name="username" placeholder="${ ui.message("referenceapplication.login.username.placeholder") }"/>
-                </p>
+                    </div>
+                    <input id="username" class="form-control" type="text" name="username" placeholder="${ ui.message("referenceapplication.login.username.placeholder") }"/>
+                </div>
 
-                <p class="left">
-                    <label for="password">
+                <div class="col-sm-6 form-group">
+                    <div for="password">
                         ${ ui.message("referenceapplication.login.password") }:
-                    </label>
-                    <input id="password" type="password" name="password" placeholder="${ ui.message("referenceapplication.login.password.placeholder") }"/>
-                </p>
+                    </div>
+                    <input id="password" type="password"  class="form-control" name="password" placeholder="${ ui.message("referenceapplication.login.password.placeholder") }"/>
+                </div>
 
-                <p class="clear">
-                    <label for="sessionLocation">
+                <div class="col-xs-12">
+                    <div for="sessionLocation">
                         ${ ui.message("referenceapplication.login.sessionLocation") }: <span class="location-error" id="sessionLocationError" style="display: none">${ui.message("referenceapplication.login.error.locationRequired")}</span>
-                    </label>
-                    <ul id="sessionLocation" class="select">
+                    </div>
+                    <ul id="sessionLocation" class="select list-group">
                         <% locations.sort { ui.format(it) }.each { %>
-                        <li id="${ui.encodeHtml(it.name)}" tabindex="0"  value="${it.id}">${ui.encodeHtmlContent(ui.format(it))}</li>
+                        <li id="${ui.encodeHtml(it.name)}" tabindex="0" class="list-group-item small col-sm-6 col-md-4 col-lg-3" value="${it.id}">${ui.encodeHtmlContent(ui.format(it))}</li>
                         <% } %>
+                        <div class="clearfix"></div>
                     </ul>
-                </p>
-
+                </div>
+                <div class="clearfix"></div>
                 <input type="hidden" id="sessionLocationInput" name="sessionLocation"
                     <% if (lastSessionLocation != null) { %> value="${lastSessionLocation.id}" <% } %> />
 
-                <p></p>
-                <p>
-                    <input id="loginButton" class="confirm" type="submit" value="${ ui.message("referenceapplication.login.button") }"/>
-                </p>
-                <p>
+                <div class="float-right">
+                    <input id="loginButton" class="btn btn-success" type="submit" value="${ ui.message("referenceapplication.login.button") }"/>
+                    <div>
                     <a id="cantLogin" href="javascript:void(0)">
                         <i class="icon-question-sign small"></i>
                         ${ ui.message("referenceapplication.login.cannotLogin") }
                     </a>
-                </p>
-
+                    </div>
+            </div>
             </fieldset>
 
     		<input type="hidden" name="redirectUrl" value="${redirectUrl}" />
@@ -164,15 +164,15 @@ ${ ui.includeFragment("referenceapplication", "infoAndErrorMessages") }
     </div>
 </div>
 
-<div id="cannotLoginPopup" class="dialog" style="display: none">
-    <div class="dialog-header">
+<div id="cannotLoginPopup" class="dialog modal-content" style="display: none">
+    <div class="modal-header">
         <i class="icon-info-sign"></i>
-        <h3>${ ui.message("referenceapplication.login.cannotLogin") }</h3>
+        <div>${ ui.message("referenceapplication.login.cannotLogin") }</div>
     </div>
-    <div class="dialog-content">
-        <p class="dialog-instructions">${ ui.message("referenceapplication.login.cannotLoginInstructions") }</p>
-
-        <button class="confirm">${ ui.message("referenceapplication.okay") }</button>
+    <div class="modal-body">
+        <i>${ ui.message("referenceapplication.login.cannotLoginInstructions") }</i>
+        <br/><br/>
+        <button class="btn confirm btn-success">${ ui.message("referenceapplication.okay") }</button>
     </div>
 </div>
 

@@ -1,0 +1,74 @@
+.navbar-brand>img {
+    height: 40px
+}
+
+#body-wrapper {
+    top: 60px;
+    padding: 10px;
+    position: relative;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.float-right {
+    float: right
+}
+
+.btn {
+    max-width: 250px;
+}
+
+#login-form legend {
+    text-transform: uppercase;
+    font-size: inherit;
+    width: inherit;
+    padding: 0 10px;
+}
+
+#login-form fieldset {
+    max-width: 1000px;
+    margin: 0px auto;
+    border: 1px solid #eee;
+    padding: 20px;
+}
+
+#sessionLocation li.selected {
+    outline: 0;
+    border-color: #007fff;
+    background: #007fff;
+    color: #fff;
+}
+
+.list-group-item {
+    margin-right: -1px;
+    color: #007fff
+}
+
+.modal-header {
+    background: #00463f;
+    color: white;
+}
+
+.extensions_wrap {
+    margin: 0px auto
+}
+
+.extension_div a.thumbnail:hover {
+    border-color: #ddd;
+    text-decoration: none
+}
+
+
+/*  */
+
+[class^="icon-"],
+[class*=" icon-"] {
+    font-family: FontAwesome;
+    display: block;
+    font-size: 50px;
+    content:""
+}
+
+[class^="icon-"]:before {
+    content: "\f002";
+}

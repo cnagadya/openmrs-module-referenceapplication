@@ -42,7 +42,7 @@ public class ConfigureAtlasNotificationProducer implements AdministrativeNotific
         AdministrativeNotification notification = new AdministrativeNotification();
         notification.setId("atlas.configure");
         notification.setIcon("icon-info-sign");
-        notification.setCssClass("success");
+        notification.setCssClass("alert alert-success");
         notification.setLabel("atlas.notification.label");
         notification.setRequiredPrivilege(AtlasConstants.PRIV_MANAGE_ATLAS_DATA);
 
